@@ -34,6 +34,7 @@ function onSearch(e) {
 
 function onLoadMore(e) {
   imagesApiService.fetchArticles().then(appendImagesMarkup);
+  scrollingPage();
 }
 
 function appendImagesMarkup(images) {
@@ -44,4 +45,15 @@ function clearFeal() {
   refs.imagesList.innerHTML = '';
 }
 
-function addBtn() {}
+function scrollingPage() {
+  try {
+    setTimeout(() => {
+      refs.imagesList.scrollIntoView({
+        block: 'end',
+        behavior: 'smooth',
+      });
+    }, 1000);
+  } catch (error) {
+    console.log(error);
+  }
+}
